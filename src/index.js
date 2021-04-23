@@ -1,5 +1,8 @@
 const { ApolloServer } = require('apollo-server')
 
+/**
+ * Banco de dados fictício.
+ */
 const DB = {
   authors: [
     { id: 1, name: 'Pedrinho' },
@@ -13,6 +16,9 @@ const DB = {
   ]
 }
 
+/**
+ * Definições da API.
+ */
 const typeDefs = `
   type Query {
     healthCheck: Boolean!
@@ -46,6 +52,9 @@ const typeDefs = `
   }
 `
 
+/**
+ * Resolução das definições.
+ */
 const resolvers = {
   Query: {
     healthCheck: () => true,
@@ -72,6 +81,12 @@ const resolvers = {
   }
 }
 
+/**
+ * Instância do servidor.
+ */
 const server = new ApolloServer({ typeDefs, resolvers })
 
-server.listen(3024).then(({ url }) => console.log(url))
+/**
+ * Subir o servidor.
+ */
+server.listen(4000).then(({ url }) => console.log(url))
